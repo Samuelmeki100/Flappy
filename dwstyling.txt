@@ -1,0 +1,134 @@
+ Database: `globalstyling`
+
+
+
+ Table structure for table `administrator`
+
+
+CREATE TABLE IF NOT EXISTS `administrator` (
+  `Username` tinytext NOT NULL,
+  `Password` tinytext NOT NULL,
+  `FirstName` tinytext NOT NULL,
+  `LastName` tinytext NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+Dumping data for table `administrator`
+
+
+INSERT INTO `administrator` (`Username`, `Password`, `FirstName`, `LastName`) VALUES
+('innosp', 'p', 'Innocent', 'Phiri');
+
+
+
+ Table structure for table `appointment`
+
+
+CREATE TABLE IF NOT EXISTS `appointment` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `TimeOfAppointment` time NOT NULL,
+  `DateOfAppointment` date NOT NULL,
+  `AppointmentProductID` int(11) NOT NULL,
+  `CustomerID` int(11) NOT NULL,
+  `AppointmentPlace` tinytext NOT NULL,
+  PRIMARY KEY (`ID`),
+  UNIQUE KEY `AppointmentProductID` (`AppointmentProductID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+
+
+Table structure for table `appointmentproducts`
+
+
+CREATE TABLE IF NOT EXISTS `appointmentproducts` (
+  `AppointmentID` int(11) NOT NULL,
+  `ProductID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+
+Table structure for table `products`
+
+
+CREATE TABLE IF NOT EXISTS `products` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `Name` tinytext NOT NULL,
+  `Cost` int(11) NOT NULL,
+  `image` text NOT NULL,
+  `Location` tinytext NOT NULL,
+  `Type` text NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=32 ;
+
+
+Dumping data for table `products`
+
+
+INSERT INTO `products` (`ID`, `Name`, `Cost`, `image`, `Location`, `Type`) VALUES
+(18, 'Buda', 7565, 'chilambula_lodge.jpg', 'LNP', 'Style'),
+(29, 'Buda', 7565, 'chilambula_lodge.jpg', 'LNP', 'Style'),
+(30, 'Buda', 7565, 'chilambula_lodge.jpg', 'LNP', 'Style'),
+(31, 'Buda', 7565, 'chilambula_lodge.jpg', 'LN', 'Style');
+
+
+
+
+Table structure for table `salon`
+
+
+CREATE TABLE IF NOT EXISTS `salon` (
+  `ID` int(11) NOT NULL,
+  `Name` tinytext NOT NULL,
+  `Location` mediumtext NOT NULL,
+  `Currency` tinytext NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+
+Table structure for table `tmpap`
+
+
+CREATE TABLE IF NOT EXISTS `tmpap` (
+  `UID` int(11) NOT NULL,
+  `PID` int(11) NOT NULL,
+  `SID` tinytext NOT NULL,
+  `Price` double NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+Dumping data for table `tmpap`
+
+
+INSERT INTO `tmpap` (`UID`, `PID`, `SID`, `Price`) VALUES
+(1, 31, 'L', 7565),
+(1, 30, 'P', 10218.802),
+(1, 29, 'P', 10232.419),
+(1, 18, 'L', 7565),
+(1, 30, 'L', 7565);
+
+
+
+Table structure for table `users`
+
+
+CREATE TABLE IF NOT EXISTS `users` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `FirstName` tinytext NOT NULL,
+  `LastName` tinytext NOT NULL,
+  `Email` varchar(255) NOT NULL,
+  `Gender` tinytext NOT NULL,
+  `DateOfBirth` date NOT NULL,
+  `Password` tinytext NOT NULL,
+  PRIMARY KEY (`ID`),
+  UNIQUE KEY `Email` (`Email`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+
+Dumping data for table `users`
+
+
+INSERT INTO `users` (`ID`, `FirstName`, `LastName`, `Email`, `Gender`, `DateOfBirth`, `Password`) VALUES
+(1, 'Innocent', 'Phiri', 'innocentphiri75@gmail.com', 'Male', '1996-10-21', 'phase');
+
+
